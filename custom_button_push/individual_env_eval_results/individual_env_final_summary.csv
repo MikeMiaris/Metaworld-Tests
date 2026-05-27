@@ -1,0 +1,5 @@
+config,env_name,mean_success_rate,std_success_rate,mean_return,std_return_across_seeds,mean_steps,mean_first_success_step,eval_seeds,total_episodes
+base,button-press-v3,1,0,64.0180242,0.848248861,37.48,37.48,5,750
+base,push-v3,1,0,130.6730119,3.795481084,38.032,38.032,5,750
+careful,button-press-v3,1,0,59.39478348,0.815484713,37.512,37.512,5,750
+careful,push-v3,0.984,0.016733201,187.5833079,63.95744118,44.908,37.51437415,5,750
