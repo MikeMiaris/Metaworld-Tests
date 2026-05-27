@@ -1,24 +1,3 @@
-"""
-Evaluate PPO on Meta-World pick-place-v3 using multi-goal evaluation.
-
-This script supports models trained WITH VecNormalize, which is important for
-models trained with the SubprocVecEnv training script.
-
-Run base model:
-    python evaluate_pick_place_v3.py --model base
-
-Run careful model:
-    python evaluate_pick_place_v3.py --model careful
-
-Evaluate without rendering:
-    python evaluate_pick_place_v3.py --model base --no-render
-
-Render only a few goals:
-    python evaluate_pick_place_v3.py --model base --num-goals 5 --sleep 0.02
-
-Save results:
-    python evaluate_pick_place_v3.py --model base --no-render --save-json results_base.json
-"""
 
 import argparse
 import json
@@ -27,7 +6,7 @@ import time
 from pathlib import Path
 
 import gymnasium as gym
-import metaworld  # noqa: F401  # registers Meta-World env IDs
+import metaworld # type: ignore
 import numpy as np
 
 from stable_baselines3 import PPO
@@ -86,13 +65,7 @@ def evaluate_mt1_multi_goal_vecnormalize(
     render=True,
     sleep=0.0,
 ):
-    """
-    Same idea as your evaluate_mt1_multi_goal function, but adapted for models
-    trained with VecNormalize.
 
-    Important: if the PPO model was trained with normalized observations, it
-    should also receive normalized observations during evaluation.
-    """
     eval_env = make_eval_env(
         env_name=env_name,
         path_length=path_length,
@@ -187,10 +160,6 @@ def evaluate_mt1_multi_goal_raw(
     render=True,
     sleep=0.0,
 ):
-    """
-    Raw version close to the function you sent.
-    Use this only if your model was trained WITHOUT VecNormalize.
-    """
     eval_env = make_eval_env(
         env_name=env_name,
         path_length=path_length,
