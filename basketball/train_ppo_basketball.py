@@ -16,10 +16,6 @@ from stable_baselines3 import PPO
 from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.vec_env import SubprocVecEnv
 
-# ──────────────────────────────────────────────
-# Top-level config  (edit these to change runs)
-# ──────────────────────────────────────────────
-
 ENV_NAME         = "basketball-v3"
 SPLIT_SEED       = 67
 TRAIN_SEEDS      = [11, 22, 33]
@@ -103,11 +99,6 @@ class ProgressBar:
 
 
 class ProgressBarCallback(BaseCallback):
-    """
-    Updates progress bar each time _on_step is called.
-    With SubprocVecEnv(N), _on_step fires once per rollout step,
-    but num_envs steps were collected — so we advance by num_envs.
-    """
 
     def __init__(self, total_timesteps: int, n_envs: int, desc: str = ""):
         super().__init__()
@@ -134,11 +125,6 @@ class ProgressBarCallback(BaseCallback):
 # ──────────────────────────────────────────────
 
 def get_task_wrapper(env):
-    """
-    basketball-v3 wrapper depth is exactly 4 levels deep:
-    env.env.env.env  — confirmed in the notebook.
-    Falls back to dynamic search if the depth ever changes.
-    """
     try:
         w = env.env.env.env
         if hasattr(w, "tasks") and hasattr(w, "toggle_sample_tasks_on_reset"):
