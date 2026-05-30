@@ -1,38 +1,33 @@
-# Metaworld-Tests
-# Meta-World PPO Results Summary
+# Σύνοψη Αποτελεσμάτων PPO σε Meta-World
 
-This file summarizes the main PPO evaluation results in this repository and links the corresponding figures/notebooks.
+Το παρόν αρχείο συγκεντρώνει τα βασικά αποτελέσματα αξιολόγησης των PPO πειραμάτων που περιλαμβάνονται στο repository και παραπέμπει στα αντίστοιχα notebooks και σχήματα.
 
-> Note: if GitHub fails to render a notebook, open it through **nbviewer** using the links below.
-
----
-
-## Repository structure
-
-The repository contains results for:
-
-### Single-task PPO experiments
-
-| Folder | Environment | Main result files |
-|---|---|---|
-| `button_press_v3/` | `button-press-v3` | notebook + figure |
-| `basketball/` | `basketball-v3` | `ppo_basketball_results.csv` + figures |
-| `push_v3/` | `push-v3` | aggregate/per-episode CSVs + figures |
-| `pick-place/` | `pick-place-v3` | aggregate/per-episode CSVs + figures |
-
-### Custom multi-task PPO experiments
-
-| Folder | Tasks | Main result files |
-|---|---|---|
-| `custom_button_push/` | `button-press-v3` + `push-v3` | summary CSVs + figures |
-| `custom_basketball_pick_place/` | `basketball-v3` + `pick-place-v3` | summary CSVs + figures |
-| `custom_push_pickplace/` | `push-v3` + `pick-place-v3` | summary CSVs + figures |
+> Αν το GitHub δεν εμφανίζει σωστά κάποιο notebook, μπορεί να ανοιχτεί μέσω των συνδέσμων nbviewer που δίνονται παρακάτω.
 
 ---
 
-## Notebook links
+## Δομή repository
 
-GitHub sometimes fails to render `.ipynb` files. Use nbviewer if needed:
+### Single-task PPO πειράματα
+
+| Φάκελος | Περιβάλλον | Κύρια αρχεία αποτελεσμάτων |
+|---|---|---|
+| `button_press_v3/` | `button-press-v3` | notebook + σχήμα |
+| `basketball/` | `basketball-v3` | `ppo_basketball_results.csv` + σχήματα |
+| `push_v3/` | `push-v3` | aggregate/per-episode CSVs + σχήματα |
+| `pick-place/` | `pick-place-v3` | aggregate/per-episode CSVs + σχήματα |
+
+### Custom multi-task PPO πειράματα
+
+| Φάκελος | Tasks | Κύρια αρχεία αποτελεσμάτων |
+|---|---|---|
+| `custom_button_push/` | `button-press-v3` + `push-v3` | summary CSVs + σχήματα |
+| `custom_basketball_pick_place/` | `basketball-v3` + `pick-place-v3` | summary CSVs + σχήματα |
+| `custom_push_pickplace/` | `push-v3` + `pick-place-v3` | summary CSVs + σχήματα |
+
+---
+
+## Σύνδεσμοι notebooks
 
 - [Basketball results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/basketball/basketball_results.ipynb)
 - [Button-press results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/button_press_v3/button_press_results.ipynb)
@@ -44,28 +39,26 @@ GitHub sometimes fails to render `.ipynb` files. Use nbviewer if needed:
 
 ---
 
-# 1. Single-task experiments
+# 1. Single-task πειράματα
 
 ## 1.1 `button-press-v3`
 
-The `button_press_v3` folder currently contains the notebook `button_press_results.ipynb`, the evaluation script, the training script, and the figure `fig1_success_rate_heatmap.png`.
+Στον φάκελο `button_press_v3/` υπάρχουν το notebook `button_press_results.ipynb`, το evaluation script, το training script και το σχήμα `fig1_success_rate_heatmap.png`.
 
-The available notebook indicates that the experiment evaluated the following PPO configurations across checkpoints:
+Οι PPO configurations που εμφανίζονται στο notebook είναι:
 
 - `base_button`
 - `careful_button`
 - `light_entropy_button`
 - `short_rollout_button`
 
-The checkpoint evaluation uses:
+Το checkpoint evaluation χρησιμοποιεί:
 
 - checkpoints: `100000`, `200000`, `300000`, `400000`, `500000`
 - groups: `train`, `test`
-- success rate, return, and first-success step as metrics
+- metrics: success rate, return, first-success step
 
-> The summary CSV referenced by the notebook is `button-press_v3_ppo_split_runs/results/checkpoint_eval/button_checkpoint_across_splits_summary.csv`, but this CSV is not currently visible in the root `button_press_v3/` folder. Therefore, the figure below is included, but the full numeric table should be committed if this result is going to be used as a main thesis result.
-
-### Figure
+### Σχήμα
 
 ![Button-press success heatmap](button_press_v3/fig1_success_rate_heatmap.png)
 
@@ -79,7 +72,7 @@ Source CSV:
 basketball/ppo_basketball_results.csv
 ```
 
-Evaluation setup visible in the CSV:
+Πειραματική διάταξη:
 
 - environment: `basketball-v3`
 - total timesteps: `6,000,000`
@@ -90,7 +83,7 @@ Evaluation setup visible in the CSV:
 - train seeds: `11`, `22`, `33`
 - configs: `A_basketball_main`, `B_basketball_entropy`
 
-### Per-run results
+### Αποτελέσματα ανά run
 
 | Config | Train seed | Train success | Test success | Train return | Test return | Success gap |
 |---|---:|---:|---:|---:|---:|---:|
@@ -101,14 +94,14 @@ Evaluation setup visible in the CSV:
 | `B_basketball_entropy` | 22 | 0.978 | 0.800 | 4438.20 | 3900.01 | 0.178 |
 | `B_basketball_entropy` | 33 | 1.000 | 1.000 | 4494.50 | 4501.43 | 0.000 |
 
-### Mean results by config
+### Μέσοι όροι ανά config
 
 | Config | Mean train success | Mean test success | Mean train return | Mean test return |
 |---|---:|---:|---:|---:|
 | `A_basketball_main` | 0.978 | 0.800 | 4416.37 | 4093.68 |
 | `B_basketball_entropy` | 0.933 | 0.733 | 4363.59 | 4026.96 |
 
-### Figures
+### Σχήματα
 
 ![Basketball mean success across seeds](basketball/basketball_figures/basketball_mean_success_across_seeds.png)
 
@@ -126,7 +119,7 @@ Source CSV:
 push_v3/push_v3_ppo_split_runs/results/push_v3_aggregate_results.csv
 ```
 
-Evaluation setup visible in the CSV:
+Πειραματική διάταξη:
 
 - environment: `push-v3`
 - total timesteps: `6,000,000`
@@ -137,15 +130,15 @@ Evaluation setup visible in the CSV:
 - configs: `base_push`, `careful_push`, `short_rollout_push`
 - `VecNormalize`: `True`
 
-### Mean results by config
+### Μέσοι όροι ανά config
 
-| Config | Mean train success | Mean test success | Mean train return | Mean test return | Main observation |
-|---|---:|---:|---:|---:|---|
-| `base_push` | 0.837 | 0.933 | 262.14 | 293.73 | Strong test success, but some train variability |
-| `careful_push` | 0.985 | 1.000 | 174.92 | 158.05 | Best and most stable success |
-| `short_rollout_push` | 0.474 | 0.533 | 470.77 | 172.29 | Much weaker success despite sometimes high return |
+| Config | Mean train success | Mean test success | Mean train return | Mean test return |
+|---|---:|---:|---:|---:|
+| `base_push` | 0.837 | 0.933 | 262.14 | 293.73 |
+| `careful_push` | 0.985 | 1.000 | 174.92 | 158.05 |
+| `short_rollout_push` | 0.474 | 0.533 | 470.77 | 172.29 |
 
-### Per-split test success
+### Test success ανά split
 
 | Config | Split 0 | Split 1 | Split 2 |
 |---|---:|---:|---:|
@@ -153,7 +146,7 @@ Evaluation setup visible in the CSV:
 | `careful_push` | 1.000 | 1.000 | 1.000 |
 | `short_rollout_push` | 0.800 | 0.400 | 0.400 |
 
-### Figures
+### Σχήματα
 
 ![Push-v3 mean success across splits](push_v3/push_v3_ppo_split_runs/figures/push_v3_mean_success_across_splits.png)
 
@@ -169,7 +162,7 @@ Source CSV:
 pick-place/pick-place_v3_ppo_split_runs/results/pick-place_v3_aggregate_results.csv
 ```
 
-Evaluation setup visible in the CSV:
+Πειραματική διάταξη:
 
 - environment: `pick-place-v3`
 - total timesteps: `6,000,000`
@@ -180,16 +173,16 @@ Evaluation setup visible in the CSV:
 - configs: `base_pick`, `careful_pick`, `short_rollout_pick`, `light_entropy_pick`
 - `VecNormalize`: `True`
 
-### Mean results by config
+### Μέσοι όροι ανά config
 
-| Config | Mean train success | Mean test success | Mean train return | Mean test return | Main observation |
-|---|---:|---:|---:|---:|---|
-| `base_pick` | 0.837 | 0.733 | 72.08 | 51.57 | Moderate performance, unstable across splits |
-| `careful_pick` | 0.993 | 0.933 | 58.69 | 59.14 | Strong and stable success |
-| `short_rollout_pick` | 0.089 | 0.000 | 273.56 | 196.14 | Failed on test variations |
-| `light_entropy_pick` | 0.956 | 1.000 | 47.33 | 66.08 | Best test success across splits |
+| Config | Mean train success | Mean test success | Mean train return | Mean test return |
+|---|---:|---:|---:|---:|
+| `base_pick` | 0.837 | 0.733 | 72.08 | 51.57 |
+| `careful_pick` | 0.993 | 0.933 | 58.69 | 59.14 |
+| `short_rollout_pick` | 0.089 | 0.000 | 273.56 | 196.14 |
+| `light_entropy_pick` | 0.956 | 1.000 | 47.33 | 66.08 |
 
-### Per-split test success
+### Test success ανά split
 
 | Config | Split 0 | Split 1 | Split 2 |
 |---|---:|---:|---:|
@@ -198,13 +191,13 @@ Evaluation setup visible in the CSV:
 | `short_rollout_pick` | 0.000 | 0.000 | 0.000 |
 | `light_entropy_pick` | 1.000 | 1.000 | 1.000 |
 
-### Figure
+### Σχήμα
 
 ![Pick-place mean success by config](pick-place/pick-place_v3_ppo_split_runs/figures/pick_place_mean_success_by_config.png)
 
 ---
 
-# 2. Custom multi-task experiments
+# 2. Custom multi-task πειράματα
 
 ## 2.1 Custom MT: `button-press-v3` + `push-v3`
 
@@ -215,11 +208,11 @@ custom_button_push/button_push_eval_results_100ep_3seeds/button_push_eval_summar
 custom_button_push/button_push_eval_results_100ep_3seeds/button_push_success_rate_pivot.csv
 ```
 
-Evaluation setup visible in the CSV:
+Πειραματική διάταξη:
 
 - tasks: `button-press-v3`, `push-v3`
 - configs: `base`, `careful`, `explore`
-- evaluation episodes: `300` per task/config
+- evaluation episodes: `300` ανά task/config
 - metrics: success rate, return, episode length, first success step
 
 ### Success rate pivot
@@ -230,7 +223,7 @@ Evaluation setup visible in the CSV:
 | `careful` | 1.000 | 0.980 |
 | `explore` | 1.000 | 0.560 |
 
-### Full summary
+### Αναλυτική σύνοψη
 
 | Config | Task | Success rate | Avg return | Avg episode length | Avg first success step | Episodes |
 |---|---|---:|---:|---:|---:|---:|
@@ -241,7 +234,7 @@ Evaluation setup visible in the CSV:
 | `explore` | `button-press-v3` | 1.000 | 75.03 | 37.92 | 37.92 | 300 |
 | `explore` | `push-v3` | 0.560 | 1148.26 | 270.43 | 90.06 | 300 |
 
-### Figures
+### Σχήματα
 
 ![Custom Button-Push success by config](custom_button_push/button_push_custom_mt_figures/custom_wrapper_success_by_config.png)
 
@@ -258,11 +251,11 @@ custom_basketball_pick_place/basketball_pickplace_eval_results/basketball_pickpl
 custom_basketball_pick_place/basketball_pickplace_eval_results/basketball_pickplace_success_rate_pivot.csv
 ```
 
-Evaluation setup visible in the CSV:
+Πειραματική διάταξη:
 
 - tasks: `basketball-v3`, `pick-place-v3`
 - configs: `base`, `careful`, `explore`
-- evaluation episodes: `50` per task/config
+- evaluation episodes: `50` ανά task/config
 - metrics: success rate, return, episode length, first success step
 
 ### Success rate pivot
@@ -273,7 +266,7 @@ Evaluation setup visible in the CSV:
 | `careful` | 1.000 | 1.000 |
 | `explore` | 0.900 | 1.000 |
 
-### Full summary
+### Αναλυτική σύνοψη
 
 | Config | Task | Success rate | Avg return | Avg episode length | Avg first success step | Episodes |
 |---|---|---:|---:|---:|---:|---:|
@@ -284,7 +277,7 @@ Evaluation setup visible in the CSV:
 | `explore` | `basketball-v3` | 0.900 | 1787.81 | 500.00 | 68.11 | 50 |
 | `explore` | `pick-place-v3` | 1.000 | 4125.38 | 500.00 | 42.10 | 50 |
 
-### Figures
+### Σχήματα
 
 ![Basketball-PickPlace success by config](custom_basketball_pick_place/basketball_pickplace_custom_mt_figures/basketball_pickplace_success_by_config.png)
 
@@ -294,8 +287,6 @@ Evaluation setup visible in the CSV:
 
 ## 2.3 Custom MT: `push-v3` + `pick-place-v3`
 
-This is an additional custom MT experiment present in the repository.
-
 Source CSVs:
 
 ```text
@@ -303,11 +294,11 @@ custom_push_pickplace/push_pickplace_eval_results/push_pickplace_summary.csv
 custom_push_pickplace/push_pickplace_eval_results/push_pickplace_success_rate_pivot.csv
 ```
 
-Evaluation setup visible in the CSV:
+Πειραματική διάταξη:
 
 - tasks: `push-v3`, `pick-place-v3`
 - configs: `base`, `careful`, `explore`
-- evaluation episodes: `300` per task/config
+- evaluation episodes: `300` ανά task/config
 - metrics: success rate, return, episode length, first success step
 
 ### Success rate pivot
@@ -318,7 +309,7 @@ Evaluation setup visible in the CSV:
 | `careful` | 1.000 | 1.000 |
 | `explore` | 0.947 | 0.960 |
 
-### Full summary
+### Αναλυτική σύνοψη
 
 | Config | Task | Success rate | Avg return | Avg episode length | Avg first success step | Episodes |
 |---|---|---:|---:|---:|---:|---:|
@@ -329,7 +320,7 @@ Evaluation setup visible in the CSV:
 | `explore` | `pick-place-v3` | 0.947 | 53.50 | 66.61 | 42.20 | 300 |
 | `explore` | `push-v3` | 0.960 | 138.52 | 59.47 | 41.12 | 300 |
 
-### Figures
+### Σχήματα
 
 ![Push-PickPlace mean success](custom_push_pickplace/push_pickplace_figures/push_pickplace_mean_success.png)
 
@@ -339,46 +330,32 @@ Evaluation setup visible in the CSV:
 
 ---
 
-# 3. Overall comparison
+# 3. Συγκεντρωτικοί πίνακες
 
-## Best single-task results
+## 3.1 Single-task αποτελέσματα
 
-| Environment | Best config by test success | Best test success | Notes |
-|---|---|---:|---|
-| `button-press-v3` | multiple configs/checkpoints | ~1.000 | Solved very early; full committed CSV recommended |
-| `basketball-v3` | `A_basketball_main` / `B_basketball_entropy` seed 33 | 1.000 | High seed variability; mean test success lower |
-| `push-v3` | `careful_push` | 1.000 | Most stable single-task push config |
-| `pick-place-v3` | `light_entropy_pick` | 1.000 | Strongest test success across splits |
+| Environment | Config | Test success |
+|---|---|---:|
+| `basketball-v3` | `A_basketball_main` | 0.800 |
+| `basketball-v3` | `B_basketball_entropy` | 0.733 |
+| `push-v3` | `base_push` | 0.933 |
+| `push-v3` | `careful_push` | 1.000 |
+| `push-v3` | `short_rollout_push` | 0.533 |
+| `pick-place-v3` | `base_pick` | 0.733 |
+| `pick-place-v3` | `careful_pick` | 0.933 |
+| `pick-place-v3` | `short_rollout_pick` | 0.000 |
+| `pick-place-v3` | `light_entropy_pick` | 1.000 |
 
-## Best custom MT results
+## 3.2 Custom multi-task αποτελέσματα
 
-| Custom MT | Best config | Task 1 success | Task 2 success | Main takeaway |
-|---|---|---:|---:|---|
-| `button-press-v3` + `push-v3` | `careful` | 1.000 | 0.980 | Button is solved; push is sensitive to config |
-| `basketball-v3` + `pick-place-v3` | `careful` | 1.000 | 1.000 | Best balanced result for harder MT pair |
-| `push-v3` + `pick-place-v3` | `careful` | 1.000 | 1.000 | Strong additional MT result |
-
----
-
-# 4. Raw result files
-
-## Single-task
-
-```text
-basketball/ppo_basketball_results.csv
-push_v3/push_v3_ppo_split_runs/results/push_v3_aggregate_results.csv
-push_v3/push_v3_ppo_split_runs/results/push_v3_per_episode_results.csv
-pick-place/pick-place_v3_ppo_split_runs/results/pick-place_v3_aggregate_results.csv
-pick-place/pick-place_v3_ppo_split_runs/results/pick-place_v3_per_episode_results.csv
-```
-
-## Custom MT
-
-```text
-custom_button_push/button_push_eval_results_100ep_3seeds/button_push_eval_summary.csv
-custom_button_push/button_push_eval_results_100ep_3seeds/button_push_success_rate_pivot.csv
-custom_basketball_pick_place/basketball_pickplace_eval_results/basketball_pickplace_eval_summary.csv
-custom_basketball_pick_place/basketball_pickplace_eval_results/basketball_pickplace_success_rate_pivot.csv
-custom_push_pickplace/push_pickplace_eval_results/push_pickplace_summary.csv
-custom_push_pickplace/push_pickplace_eval_results/push_pickplace_success_rate_pivot.csv
-```
+| Custom MT | Config | Task 1 success | Task 2 success |
+|---|---|---:|---:|
+| `button-press-v3` + `push-v3` | `base` | 1.000 | 0.973 |
+| `button-press-v3` + `push-v3` | `careful` | 1.000 | 0.980 |
+| `button-press-v3` + `push-v3` | `explore` | 1.000 | 0.560 |
+| `basketball-v3` + `pick-place-v3` | `base` | 0.960 | 1.000 |
+| `basketball-v3` + `pick-place-v3` | `careful` | 1.000 | 1.000 |
+| `basketball-v3` + `pick-place-v3` | `explore` | 0.900 | 1.000 |
+| `push-v3` + `pick-place-v3` | `base` | 0.973 | 1.000 |
+| `push-v3` + `pick-place-v3` | `careful` | 1.000 | 1.000 |
+| `push-v3` + `pick-place-v3` | `explore` | 0.960 | 0.947 |
