@@ -360,26 +360,7 @@ Evaluation setup visible in the CSV:
 
 ---
 
-# 4. Main thesis observations
-
-1. **Success rate is the most important metric.**  
-   Some configurations show high average return even when success rate is weaker. This is especially visible in `push-v3` and `pick-place-v3`, where reward magnitude alone is not enough to describe task completion.
-
-2. **`button-press-v3` is the easiest task.**  
-   It reaches very high success quickly and is useful as a baseline/easy manipulation task.
-
-3. **`push-v3` is sensitive to PPO configuration.**  
-   The `careful_push` configuration reached perfect test success across the three splits, while `short_rollout_push` performed much worse.
-
-4. **`pick-place-v3` benefits from either careful training or light entropy.**  
-   `light_entropy_pick` achieved perfect test success across the three splits, while `short_rollout_pick` failed on the test variations.
-
-5. **Multi-task results should always be reported per task.**  
-   A single average can hide that one task is solved while another task fails or becomes unstable. This is especially important for the `button-press-v3` + `push-v3` custom MT, where `button-press-v3` is solved by all configs but `push-v3` drops strongly under `explore`.
-
----
-
-# 5. Raw result files
+# 4. Raw result files
 
 ## Single-task
 
@@ -401,15 +382,3 @@ custom_basketball_pick_place/basketball_pickplace_eval_results/basketball_pickpl
 custom_push_pickplace/push_pickplace_eval_results/push_pickplace_summary.csv
 custom_push_pickplace/push_pickplace_eval_results/push_pickplace_success_rate_pivot.csv
 ```
-
----
-
-# 6. Recommended next cleanup
-
-Before submitting this repository as thesis material, it would be useful to:
-
-1. Commit the full `button-press-v3` checkpoint evaluation CSVs if available.
-2. Add this file as `RESULTS.md`.
-3. Link `RESULTS.md` from the main `README.md`.
-4. Keep raw CSVs and final figures under version control.
-5. Avoid relying only on notebooks, since GitHub sometimes fails to render them.
