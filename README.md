@@ -359,3 +359,65 @@ custom_push_pickplace/push_pickplace_eval_results/push_pickplace_success_rate_pi
 | `push-v3` + `pick-place-v3` | `base` | 0.973 | 1.000 |
 | `push-v3` + `pick-place-v3` | `careful` | 1.000 | 1.000 |
 | `push-v3` + `pick-place-v3` | `explore` | 0.960 | 0.947 |
+
+
+### Γενικές ρυθμίσεις εκπαίδευσης
+
+| Παράμετρος | Τιμή / Περιγραφή |
+|---|---|
+| Αλγόριθμος | PPO |
+| Policy | `MlpPolicy` |
+| Περιβάλλοντα | Meta-World MT1 tasks |
+| Reward function | `v2` |
+| Μέγιστο μήκος επεισοδίου | `500` steps |
+| Vectorized environments | `SubprocVecEnv` |
+| Καταγραφή επεισοδίων | `VecMonitor` |
+| Κανονικοποίηση | `VecNormalize`, όπου χρησιμοποιείται |
+| TensorBoard | Χρησιμοποιείται για logging των training runs |
+| Checkpoints | Αποθηκεύονται ανά συγκεκριμένο αριθμό timesteps |
+
+### Single-task template configs
+
+Οι single-task πειραματικές ομάδες `button-press-v3`, `push-v3` και `pick-place-v3` χρησιμοποιούν παρόμοια δομή PPO configurations. Τα ονόματα των configs διαφέρουν ανά task, π.χ. `base_push`, `base_pick`, `base_button`, αλλά οι βασικές ρυθμίσεις ακολουθούν την ίδια λογική.
+
+| Config family | Learning rate | `n_steps` | Rollout size με 4 envs | Batch size | Epochs | `gamma` | `gae_lambda` | `clip_range` | `ent_coef` | `vf_coef` | `max_grad_norm` |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `base_*` | `3e-4` | `1024` | `4096` | `256` | `10` | `0.99` | `0.95` | `0.20` | `0.0` | `0.5` | `0.5` |
+| `careful_*` | `1e-4` | `1024` | `4096` | `512` | `15` | `0.995` | `0.95` | `0.15` | `0.0` | `0.7` | `0.5` |
+| `short_rollout_*` | `3e-4` | `512` | `2048` | `256` | `10` | `0.99` | `0.95` | `0.20` | `0.0` | `0.5` | `0.5` |
+| `light_entropy_*` | `2.5e-4` | `1024` | `4096` | `256` | `10` | `0.99` | `0.95` | `0.20` | `0.002` | `0.5` | `0.5` |
+
+Στα single-task scripts χρησιμοποιούνται 4 parallel workers (`n_envs=4`) και, για τα split-based πειράματα, τρία 45/5 train/test splits με 50 συνολικά task variations ανά περιβάλλον.
+
+### Basketball single-task configs
+
+Το `basketball-v3` χρησιμοποιεί δύο ειδικές PPO configurations, οι οποίες εκπαιδεύονται για `6,000,000` timesteps με `4` parallel environments και τρία train seeds (`11`, `22`, `33`).
+
+| Config | Learning rate | `n_steps` | Rollout size με 4 envs | Batch size | Epochs | `gamma` | `gae_lambda` | `clip_range` | `ent_coef` | `vf_coef` | `max_grad_norm` |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `A_basketball_main` | `3e-4` | `8192` | `32768` | `512` | `20` | `0.995` | `0.95` | `0.20` | `0.0` | `0.5` | `1.0` |
+| `B_basketball_entropy` | `3e-4` | `8192` | `32768` | `512` | `20` | `0.995` | `0.95` | `0.20` | `0.001` | `0.5` | `1.0` |
+
+### Custom multi-task configs
+
+Τα custom multi-task πειράματα χρησιμοποιούν τρεις κοινές PPO configurations: `base`, `careful` και `explore`. Κάθε custom environment επιλέγει ένα από τα δύο tasks στην αρχή κάθε επεισοδίου και προσθέτει one-hot task ID στην παρατήρηση, ώστε η πολιτική να γνωρίζει ποιο task είναι ενεργό.
+
+| Config | Learning rate | `n_steps` | Rollout size με 8 envs | Batch size | Epochs | `gamma` | `gae_lambda` | `clip_range` | `ent_coef` | `vf_coef` | `max_grad_norm` | Network architecture |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| `base` | `1e-4` | `2048` | `16384` | `1024` | `10` | `0.99` | `0.95` | `0.15` | `0.005` | `0.7` | `0.5` | `(256, 256)` |
+| `careful` | `3e-5` | `2048` | `16384` | `1024` | `15` | `0.99` | `0.95` | `0.10` | `0.002` | `0.8` | `0.3` | `(256, 256)` |
+| `explore` | `2e-4` | `2048` | `16384` | `1024` | `10` | `0.99` | `0.95` | `0.20` | `0.01` | `0.5` | `0.5` | `(256, 256)` |
+
+Οι custom multi-task εκπαιδεύσεις χρησιμοποιούν `8` parallel environments και default training budget `10,000,000` timesteps. Στα training scripts αποθηκεύονται τόσο το τελικό PPO μοντέλο όσο και τα στατιστικά του `VecNormalize`, ώστε η αξιολόγηση να μπορεί να γίνει με τα ίδια normalization statistics.
+
+### Config names ανά πείραμα
+
+| Πείραμα | Config names |
+|---|---|
+| `button-press-v3` | `base_button`, `careful_button`, `short_rollout_button`, `light_entropy_button` |
+| `basketball-v3` | `A_basketball_main`, `B_basketball_entropy` |
+| `push-v3` | `base_push`, `careful_push`, `short_rollout_push`, `light_entropy_push` |
+| `pick-place-v3` | `base_pick`, `careful_pick`, `short_rollout_pick`, `light_entropy_pick` |
+| Custom `button-press-v3` + `push-v3` | `base`, `careful`, `explore` |
+| Custom `basketball-v3` + `pick-place-v3` | `base`, `careful`, `explore` |
+| Custom `push-v3` + `pick-place-v3` | `base`, `careful`, `explore` |
