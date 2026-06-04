@@ -1,0 +1,9 @@
+config,task_name,success_rate,avg_return,std_return,avg_episode_length,std_episode_length,avg_first_success_step,median_first_success_step,episodes,experiment,source_file
+careful,basketball-v3,1.0,122.13943661529032,11.757968386418936,53.8,2.088349590796026,53.8,53.0,300,basketball_pickplace_noid,basketball_pickplace_noid_eval_results\basketball_pickplace_noid_summary.csv
+careful,pick-place-v3,1.0,64.8125010651825,17.52633884543,43.193333333333335,4.60143451046183,43.193333333333335,44.0,300,basketball_pickplace_noid,basketball_pickplace_noid_eval_results\basketball_pickplace_noid_summary.csv
+base,basketball-v3,0.0,2942.440012212528,543.6579033945942,500.0,0.0,,,300,basketball_push_noid,basketball_push_noid_eval_results\basketball_push_noid_summary.csv
+base,push-v3,1.0,171.5140936406223,35.502821372084625,38.72,4.948051202477712,38.72,38.0,300,basketball_push_noid,basketball_push_noid_eval_results\basketball_push_noid_summary.csv
+careful,button-press-v3,1.0,58.69730952611222,9.355787284596138,37.68666666666667,1.959921733017435,37.68666666666667,38.0,300,button_push_noid,button_push_noid_eval_results\button_push_noid_summary.csv
+careful,push-v3,0.0266666666666666,507.9137687793955,698.7096419683272,492.47333333333336,46.35701166660496,217.75,224.0,300,button_push_noid,button_push_noid_eval_results\button_push_noid_summary.csv
+careful,pick-place-v3,1.0,59.42029640720404,19.50115972043035,41.41333333333333,5.471955458886307,41.41333333333333,41.0,300,push_pickplace_noid,push_pickplace_noid_eval_results\push_pickplace_noid_summary.csv
+careful,push-v3,0.9933333333333332,163.96730942428275,43.79517796842257,42.00666666666667,38.164841665509385,38.93288590604027,38.0,300,push_pickplace_noid,push_pickplace_noid_eval_results\push_pickplace_noid_summary.csv
