@@ -1,0 +1,3 @@
+config,task_name,success_rate,avg_return,std_return,avg_episode_length,std_episode_length,avg_first_success_step,median_first_success_step,episodes
+base,basketball-v3,0.0,2942.440012212528,543.6579033945942,500.0,0.0,,,300
+base,push-v3,1.0,171.5140936406223,35.502821372084625,38.72,4.948051202477712,38.72,38.0,300

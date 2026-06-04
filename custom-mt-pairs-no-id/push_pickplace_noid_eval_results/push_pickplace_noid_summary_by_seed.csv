@@ -1,0 +1,7 @@
+config,task_name,eval_seed,success_rate,avg_return,avg_episode_length,avg_first_success_step,episodes
+careful,pick-place-v3,1000,1.0,59.17067545162842,41.16,41.16,100
+careful,pick-place-v3,2000,1.0,58.233990393539095,40.92,40.92,100
+careful,pick-place-v3,3000,1.0,60.8562233764446,42.16,42.16,100
+careful,push-v3,1000,1.0,165.81666033382095,40.16,40.16,100
+careful,push-v3,2000,0.98,164.90093187304527,47.38,38.142857142857146,100
+careful,push-v3,3000,1.0,161.18433606598214,38.48,38.48,100

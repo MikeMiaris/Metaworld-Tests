@@ -1,0 +1,7 @@
+config,task_name,eval_seed,success_rate,avg_return,avg_episode_length,avg_first_success_step,episodes
+careful,button-press-v3,1000,1.0,60.283018233706606,37.7,37.7,100
+careful,button-press-v3,2000,1.0,57.36734463098686,37.58,37.58,100
+careful,button-press-v3,3000,1.0,58.44156571364319,37.78,37.78,100
+careful,push-v3,1000,0.02,611.5194845406398,493.92,196.0,100
+careful,push-v3,2000,0.04,520.7192886004972,488.46,211.5,100
+careful,push-v3,3000,0.02,391.5025331970494,495.04,252.0,100

@@ -1,0 +1,7 @@
+config,task_name,eval_seed,success_rate,avg_return,avg_episode_length,avg_first_success_step,episodes
+base,basketball-v3,1000,0.0,2963.6994067323576,500.0,,100
+base,basketball-v3,2000,0.0,2967.486935846166,500.0,,100
+base,basketball-v3,3000,0.0,2896.13369405906,500.0,,100
+base,push-v3,1000,1.0,165.88836957326103,37.64,37.64,100
+base,push-v3,2000,1.0,172.69059822526978,39.02,39.02,100
+base,push-v3,3000,1.0,175.96331312333598,39.5,39.5,100
