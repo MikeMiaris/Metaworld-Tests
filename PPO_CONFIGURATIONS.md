@@ -221,7 +221,7 @@ Meta-World observation + one-hot task ID
 Άρα, η βασική παρατήρηση είναι:
 
 ```text
-Περισσότερη exploration δεν σημαίνει απαραίτητα καλύτερη multi-task απόδοση.
+Περισσότερo exploration δεν σημαίνει απαραίτητα καλύτερη απόδοση.
 ```
 
 ---
@@ -250,9 +250,9 @@ Meta-World observation + one-hot task ID
 |---|---|
 | Το `careful` συχνά σταθεροποιεί το `push-v3` | Η πιο συντηρητική ενημέρωση του policy βοηθά σταθερότερη μάθηση |
 | Το `base` ήταν καλύτερο στο `basketball-v3 + push-v3` | Η πιο ισορροπημένη ρύθμιση βοήθησε το basketball σε pair setting |
-| Το `explore` δεν έλυσε τα hard all3/all4 tasks | Η επιπλέον exploration δεν αρκεί από μόνη της |
+| Το `explore` δεν έλυσε τα hard all3/all4 tasks | Επιπλέον exploration δεν αρκεί από μόνη του |
 | Τα `short_rollout_*` configs ήταν συχνά πιο αδύναμα | Τα μικρότερα rollouts δεν δίνουν αρκετό trajectory context |
-| Το `light_entropy_pick` πέτυχε πολύ καλά στο pick-place single-task | Μικρή exploration μπορεί να βοηθήσει σε συγκεκριμένα object-placement tasks |
+| Το `light_entropy_pick` πέτυχε πολύ καλά στο pick-place single-task | Μικρό exploration μπορεί να βοηθήσει σε συγκεκριμένα object-placement tasks |
 
 ---
 
@@ -263,7 +263,7 @@ Meta-World observation + one-hot task ID
 ```text
 base      -> ισορροπημένη βασική ρύθμιση
 careful   -> πιο σταθερή και συντηρητική μάθηση
-explore   -> περισσότερη exploration
+explore   -> περισσότερο exploration
 short     -> συχνότερα updates με μικρότερα rollouts
 entropy   -> ελαφριά ενίσχυση εξερεύνησης
 ```
