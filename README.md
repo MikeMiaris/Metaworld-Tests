@@ -29,14 +29,6 @@
 
 ## Σύνδεσμοι notebooks
 
-- [Basketball results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/basketball/basketball_results.ipynb)
-- [Button-press results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/button_press_v3/button_press_results.ipynb)
-- [Push-v3 results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/push_v3/push_v3_results_notebook.ipynb)
-- [Pick-place results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/pick-place/pick_place_results.ipynb)
-- [Custom Button-Push results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/custom_button_push/button_push_custom_mt_results.ipynb)
-- [Custom Basketball-PickPlace results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/custom_basketball_pick_place/basketball_pickplace_custom_mt_results_notebook.ipynb)
-- [Custom Push-PickPlace results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/custom_push_pickplace/push_pickplace_custom_mt_results_notebook.ipynb)
-
 ---
 
 # 1. Single-task πειράματα
