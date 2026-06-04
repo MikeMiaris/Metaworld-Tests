@@ -27,7 +27,7 @@
 | `custom-mt-pairs/custom_push_pickplace/` | `push-v3` + `pick-place-v3` | summary CSVs + σχήματα |
 | `custom-mt-pairs/` | επιπλέον pair summaries | συγκεντρωτικά notebook outputs |
 
-### Custom multi-task scaling πειράματα
+### Custom multi-task  πειράματα
 
 | Φάκελος | Περιγραφή | Κύρια αρχεία αποτελεσμάτων |
 |---|---|---|
@@ -44,7 +44,6 @@
 
 ## Σύνδεσμοι notebooks
 
-<<<<<<< HEAD
 ### Single-task notebooks
 
 - [Basketball results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/single-task-mts/basketball/basketball_results.ipynb)
@@ -63,9 +62,6 @@
 - [Custom MT 4-envs summary notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/custom-mt-4-envs/custom_mt_4_envs_results_notebook.ipynb)
 - [Task-ID ablation results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/custom-mt-pairs-no-id/task_id_ablation_results_notebook.ipynb)
 
-=======
->>>>>>> c6c32b42c6f55fe3b96a1f8b379b3cacd3acd6c0
----
 
 # 1. Single-task πειράματα
 
@@ -547,7 +543,7 @@ custom-mt-4-envs/all4_eval_results/all4_success_rate_pivot.csv
 
 ---
 
-# 4. Task-ID ablation πειράματα
+# 4. Custom MT's Pairs χωρίς one-hot encoding
 
 Στα παρακάτω πειράματα αφαιρείται το one-hot task ID από την παρατήρηση. Έτσι ελέγχεται αν το shared policy μπορεί να ξεχωρίσει το ενεργό task μόνο από την κατάσταση του περιβάλλοντος.
 
