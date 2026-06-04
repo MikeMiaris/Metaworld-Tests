@@ -1,0 +1,4 @@
+config,basketball-v3,button-press-v3,pick-place-v3,push-v3
+base,0.0,1.0,0.0,0.66
+careful,0.0,1.0,0.0,1.0
+explore,0.0,1.0,0.013333333333333334,0.94

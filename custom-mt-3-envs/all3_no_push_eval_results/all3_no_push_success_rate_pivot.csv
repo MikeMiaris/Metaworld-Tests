@@ -1,0 +1,4 @@
+config,timesteps_label,basketball-v3,button-press-v3,pick-place-v3
+base,15M,0.0,1.0,0.0
+careful,15M,0.0,1.0,0.0
+explore,15M,0.0,1.0,0.0

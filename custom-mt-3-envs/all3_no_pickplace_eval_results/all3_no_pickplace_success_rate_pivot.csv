@@ -1,0 +1,4 @@
+config,timesteps_label,basketball-v3,button-press-v3,push-v3
+base,15M,0.0,1.0,0.7466666666666667
+careful,15M,0.0,1.0,1.0
+explore,15M,0.0,1.0,0.0

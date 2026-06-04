@@ -1,0 +1,4 @@
+config,timesteps_label,button-press-v3,pick-place-v3,push-v3
+base,15M,1.0,0.0,0.9066666666666666
+careful,15M,1.0,0.0,0.9933333333333333
+explore,15M,1.0,0.0,0.8866666666666667
