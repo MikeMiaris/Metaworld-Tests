@@ -543,7 +543,7 @@ custom-mt-4-envs/all4_eval_results/all4_success_rate_pivot.csv
 
 ---
 
-# 4. Task-ID ablation πειράματα
+# 4. Custom MT's Pairs χωρίς one-hot encoding
 
 Στα παρακάτω πειράματα αφαιρείται το one-hot task ID από την παρατήρηση. Έτσι ελέγχεται αν το shared policy μπορεί να ξεχωρίσει το ενεργό task μόνο από την κατάσταση του περιβάλλοντος.
 
