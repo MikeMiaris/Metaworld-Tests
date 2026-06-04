@@ -168,7 +168,7 @@ custom-mt-pairs-no-id/
 Meta-World observation + one-hot task ID
 ```
 
-Στα no-task-ID ablations, το one-hot task ID αφαιρείται και το policy λαμβάνει μόνο το αρχικό Meta-World observation.
+Στα no-task-ID custom mt's, το one-hot task ID αφαιρείται και το policy λαμβάνει μόνο το αρχικό Meta-World observation.
 
 ---
 
@@ -196,7 +196,7 @@ Meta-World observation + one-hot task ID
 
 ### `careful`
 
-Το `careful` είναι πιο συντηρητικό multi-task configuration. Έχει:
+Το `careful` είναι πιο συντηρητικό configuration. Έχει:
 
 ```text
 χαμηλότερο learning rate
@@ -238,7 +238,7 @@ Meta-World observation + one-hot task ID
 | Custom two-task MT | `base`, `careful`, `explore` |
 | Custom three-task MT | `base`, `careful`, `explore` |
 | Custom four-task MT | `base`, `careful`, `explore` |
-| No-task-ID ablations | `base`, `careful`, ανάλογα με το pair |
+| No-task-ID ΜΤ's | `base`, `careful`, ανάλογα με το pair |
 
 ---
 
@@ -256,7 +256,7 @@ Meta-World observation + one-hot task ID
 
 ---
 
-## 11. Συμπέρασμα
+## 11. Συμπεράσματα
 
 Οι PPO configs σχεδιάστηκαν ώστε να εξεταστούν διαφορετικές συμπεριφορές του ίδιου αλγορίθμου:
 
