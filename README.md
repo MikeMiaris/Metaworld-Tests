@@ -808,7 +808,7 @@ custom-mt-pairs-no-id/basketball_pickplace_noid_eval_results/basketball_pickplac
 
 ---
 
-# 7. Κεντρικά συμπεράσματα
+# 7. Μερικά συμπεράσματα
 
 1. Τα single-task PPO baselines δείχνουν ότι τα tasks μπορούν να λυθούν όταν εκπαιδεύονται ξεχωριστά.
 2. Τα 2-task custom MT settings μπορούν να λυθούν από ένα κοινό shared PPO policy, ειδικά με κατάλληλο PPO configuration.
@@ -818,5 +818,3 @@ custom-mt-pairs-no-id/basketball_pickplace_noid_eval_results/basketball_pickplac
 6. Το `explore` δεν λύνει απαραίτητα τα hard tasks και σε ορισμένες περιπτώσεις μειώνει τη σταθερότητα.
 7. Το one-hot task ID είναι σημαντικό σε ορισμένα task pairs, αλλά όχι καθολικά απαραίτητο.
 8. Το βασικό bottleneck φαίνεται να είναι το shared-policy multi-task optimization και το task interference, όχι η αδυναμία των individual tasks.
-
-
