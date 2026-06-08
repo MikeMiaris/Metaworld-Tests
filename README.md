@@ -60,7 +60,7 @@
 - [Custom MT pairs summary notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/custom-mt-pairs/custom_mt_pairs_results_notebook.ipynb)
 - [Custom MT 3-envs summary notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/custom-mt-3-envs/custom_mt_3_envs_results_notebook.ipynb)
 - [Custom MT 4-envs summary notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/custom-mt-4-envs/custom_mt_4_envs_results_notebook.ipynb)
-- [Task-ID ablation results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/custom-mt-pairs-no-id/task_id_ablation_results_notebook.ipynb)
+- [Custom MT's with no task id results notebook](https://nbviewer.org/github/MikeMiaris/Metaworld-Tests/blob/main/custom-mt-pairs-no-id/task_id_ablation_results_notebook.ipynb)
 
 
 # 1. Single-task πειράματα
