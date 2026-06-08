@@ -34,7 +34,7 @@
 | `custom-mt-3-envs/` | 3-task ablations | `all3_*_summary.csv`, raw episodes, pivot tables, σχήματα |
 | `custom-mt-4-envs/` | 4-task shared PPO | `all4_summary.csv`, raw episodes, pivot tables |
 
-### Task-ID ablation πειράματα
+### Custom MT's with no task id
 
 | Φάκελος | Περιγραφή | Κύρια αρχεία αποτελεσμάτων |
 |---|---|---|
